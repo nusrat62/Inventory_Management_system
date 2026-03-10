@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Inventory Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 font-sans min-h-screen">
+
+    <header class="bg-blue-600 text-white py-5 px-8 flex justify-between items-center shadow-md">
+        <h1 class="text-2xl font-bold">Inventory Dashboard</h1>
+        <button id="addItemBtn" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">Add Item</button>
+    </header>
+
+    <section class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition">
+            <h2 class="text-gray-500 font-semibold">Total Items</h2>
+            <p id="totalItems" class="text-3xl font-bold mt-2">0</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition">
+            <h2 class="text-gray-500 font-semibold">Total Value</h2>
+            <p id="totalValue" class="text-3xl font-bold mt-2">$0</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition">
+            <h2 class="text-gray-500 font-semibold">Low Stock</h2>
+            <p id="lowStock" class="text-3xl font-bold mt-2 text-red-500">0</p>
+        </div>
+    </section>
+
+
+    <section class="px-8 mb-6">
+        <canvas id="categoryChart" class="bg-white p-6 rounded-xl shadow-lg"></canvas>
+    </section>
+
+    <section class="px-8 mb-4">
+        <input type="text" id="searchInput" placeholder="Search items..."  class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </section>
+
+    <section id="inventoryGrid" class="px-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+    </section>
+    <div id="itemModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white rounded-xl w-96 p-6 relative shadow-lg">
+            <span id="closeBtn" class="absolute top-3 right-4 text-gray-500 cursor-pointer text-xl">&times;</span>
+            <h2 class="text-xl font-bold mb-4">Add / Edit Item</h2>
+            <form id="itemForm" class="flex flex-col gap-3">
+                <input type="text" id="itemName" placeholder="Item Name" class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400" required>
+                <input type="text" id="itemCategory" placeholder="Category" class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400" required>
+                <input type="number" id="itemQuantity" placeholder="Quantity" class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400" required>
+                <input type="number" id="itemPrice" placeholder="Price" class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400" required>
+                <button type="submit" class="bg-blue-600 text-white rounded-lg py-2 font-semibold hover:bg-blue-700 transition">Save Item</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
